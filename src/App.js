@@ -1,22 +1,27 @@
 import Bill from "./Bill";
-import CalcTip from "./CalcTip";
+import ShowTip from "./ShowTip";
 import People from "./People";
+import Splitter from "./Splitter";
 import Tip from "./Tip";
+import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
   return (
-    <div className="App">
-      <div className="container-div">
-        <div className="container">
-          <div className="grid">
-            <Bill />
-            <Tip />
-            <People />
+    <GlobalProvider>
+      <div className="App">
+        <div className="container-div">
+          <Splitter />
+          <div className="container">
+            <div className="grid">
+              <Bill />
+              <Tip />
+              <People />
+            </div>
+            <ShowTip />
           </div>
-          <CalcTip />
         </div>
       </div>
-    </div>
+    </GlobalProvider>
   );
 }
 

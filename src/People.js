@@ -1,22 +1,16 @@
-import { useState, useContext } from "react";
+import { useInputValues } from "./context/GlobalState";
 // import { GlobalContext } from "./context/GlobalState";
 
 const People = () => {
-  const [people, setPeople] = useState(0);
-  // const { addBill } = useContext(GlobalContext);
-
-  // const onMouseUp = () => {
-  //   const newBill = {
-  //     id: Math.floor(Math.random() * 100000000),
-  //     people: +people,
-  //   };
-
-  //   // addBill(newBill);
-  // };
-
+  const { people, setPeople } = useInputValues();
   return (
     <div className="people-div">
-      <h3>Number of People</h3>
+      <div className="people-div-text">
+        <h3>Number of People</h3>
+        <p className={`hidden-p ${people === 0 ? "hidden" : "not-hidden"}`}>
+          Can't be zero
+        </p>
+      </div>
       <input
         type="number"
         value={people}

@@ -15,10 +15,16 @@
 }
 .container-div {
   display: flex;
+  flex-direction: column;
+  gap: 4em;
   min-height: 100vh;
   align-items: center;
   justify-content: center;
   background-color: var(--Light-grayish-cyan);
+}
+.splitter-div {
+  color: var(--Very-dark-cyan);
+  letter-spacing: 0.7em;
 }
 .container {
   font-family: "Space Mono", monospace;
@@ -46,6 +52,11 @@ input {
   gap: 1em;
   margin-bottom: 2em;
 }
+.bill-div-text,
+.people-div-text {
+  display: flex;
+  align-items: center;
+}
 .bill-div input,
 .people-div input {
   background-color: var(--Very-light-grayish-cyan);
@@ -54,7 +65,30 @@ input {
   border-radius: 0.4rem;
   padding: 0.6em 0.7em;
   text-align: right;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+}
+.bill-div input:hover,
+.bill-div input:active,
+.people-div input:hover,
+.people-div input:active {
+  border: 2px solid var(--Strong-cyan);
+}
+.bill-div input {
+  background-image: url("./assets/images/icon-dollar.svg");
+  background-repeat: no-repeat;
+  background-position: center left 5%;
+}
+.people-div input {
+  background-image: url("./assets/images/icon-person.svg");
+  background-repeat: no-repeat;
+  background-position: center left 5%;
+}
+.hidden-p {
+  color: red;
+  margin-left: auto;
+}
+.hidden {
+  display: none;
 }
 .tip-div {
   display: grid;
@@ -75,6 +109,14 @@ input {
   background-color: var(--Very-light-grayish-cyan);
   color: var(--Dark-grayish-cyan);
 }
+.tip:hover {
+  background-color: var(--Light-grayish-cyan);
+  color: var(--Very-dark-cyan);
+}
+.active-tip {
+  background-color: var(--Strong-cyan);
+  color: var(--Very-dark-cyan);
+}
 .calc-tip-div {
   display: flex;
   flex: 1;
@@ -86,6 +128,7 @@ form {
   flex-direction: column;
   gap: 4em;
   border-radius: 1rem;
+  width: 100%;
 }
 form div {
   display: grid;
@@ -105,13 +148,11 @@ form div .label {
 .span {
   color: var(--Grayish-cyan);
 }
-form div input {
-  background-color: var(--Very-dark-cyan);
+.final-tip,
+.final-total {
   color: var(--Strong-cyan);
   text-align: right;
-  border: none;
   font-size: 3rem;
-  width: 100%;
   margin-left: auto;
 }
 form button {
@@ -126,6 +167,9 @@ form button {
   letter-spacing: 0.6px;
   cursor: pointer;
 }
+form button:hover {
+  background-color: var(--Light-grayish-cyan);
+}
 
 @media (min-width: 700px) and (max-width: 1200px) {
   .container {
@@ -134,13 +178,18 @@ form button {
 }
 
 @media (max-width: 700px) {
+  .splitter-div {
+    margin-top: 5em;
+  }
   .container {
     grid-template-columns: 1fr;
     width: 100%;
-    margin-top: 10em;
     border-radius: 0;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
     /* grid-template-rows: repeat(2, 2fr); */
+  }
+  .tip-div {
+    grid-template-columns: repeat(2, 2fr);
   }
 }
