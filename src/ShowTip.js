@@ -7,11 +7,6 @@ const ShowTip = () => {
   const { calculateBill } = useInputValues();
   const { finalTip } = useInputValues();
   const { finalTotal } = useInputValues();
-  // };
-  // const disableScroll = (e) => {
-  //   // This prevents the wheel event from changing the number input's value
-  //   e.preventDefault();
-  // };
 
   return (
     <div className="calc-tip-div">

@@ -7,18 +7,39 @@ export const useInputValues = () => useContext(GlobalContext);
 export const GlobalProvider = ({ children }) => {
   const [bill, setBill] = useState(0);
   const [people, setPeople] = useState(0);
-  const tip = 0.15;
+  const [finalTip, setFinalTip] = useState(0);
+  const [finalTotal, setFinalTotal] = useState(0);
+  const [tipPercentage, setTipPercentage] = useState(0);
+  // const tipPercentage = 0.15;
 
   const calculateBill = () => {
     const billPerPerson = bill / people;
-    const finalTip = Math.round(billPerPerson * tip * 100) / 100;
-    const finalTotal = Math.round((finalTip + billPerPerson) * 100) / 100;
-    console.log(billPerPerson, finalTip, finalTotal);
+
+    const calculatedFinalTip =
+      Math.round(billPerPerson * (tipPercentage / 100) * 100) / 100;
+
+    const calculatedFinalTotal =
+      Math.round((calculatedFinalTip + billPerPerson) * 100) / 100;
+
+    setFinalTip(calculatedFinalTip);
+    setFinalTotal(calculatedFinalTotal);
   };
 
   return (
     <GlobalContext.Provider
-      value={{ bill, setBill, people, setPeople, calculateBill }}
+      value={{
+        bill,
+        setBill,
+        people,
+        setPeople,
+        calculateBill,
+        tipPercentage,
+        setTipPercentage,
+        finalTip,
+        setFinalTip,
+        finalTotal,
+        setFinalTotal,
+      }}
     >
       {children}
     </GlobalContext.Provider>
