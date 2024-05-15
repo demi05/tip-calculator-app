@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useInputValues } from "./context/GlobalState";
 const Tip = () => {
-  const { tipPercentage, setTipPercentage } = useInputValues();
+  const { setTipPercentage } = useInputValues();
   const tips = [
     { id: 1, value: 5 },
     { id: 2, value: 10 },
@@ -12,7 +12,6 @@ const Tip = () => {
   ];
 
   const [isActive, setIsActive] = useState(false);
-  const [custom, setCustom] = useState("");
 
   const handleTipSelection = (value) => {
     setTipPercentage(value);
