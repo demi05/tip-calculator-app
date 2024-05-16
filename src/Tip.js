@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useInputValues } from "./context/GlobalState";
+import Custom from "./Custom";
+
 const Tip = () => {
-  const { setTipPercentage } = useInputValues();
+  let { setTipPercentage } = useInputValues();
   const tips = [
     { id: 1, value: 5 },
     { id: 2, value: 10 },
@@ -11,11 +13,20 @@ const Tip = () => {
     { id: 6, value: "Custom" },
   ];
 
-  const [isActive, setIsActive] = useState(false);
+  const [activeTipId, setActiveTipId] = useState(null);
+  const [customTip, setCustomTip] = useState("");
 
-  const handleTipSelection = (value) => {
+  const handleTipSelection = (id, value) => {
+    setActiveTipId(id);
+    if (typeof value === "number") {
+      setCustomTip("");
+    }
     setTipPercentage(value);
-    setIsActive(true);
+  };
+
+  const handleCustomTipChange = (value) => {
+    setCustomTip(value);
+    setTipPercentage(parseFloat(value));
   };
 
   return (
@@ -24,23 +35,23 @@ const Tip = () => {
       <div className={"tip-div"}>
         {tips.map((tip) => (
           <p
-            className={`tip ${isActive ? "active-tip" : "inactive-tip"}`}
+            id="p"
+            className={`tip ${
+              activeTipId === tip.id ? "active-tip" : "inactive-tip"
+            }`}
             key={tip.id}
-            onClick={() => handleTipSelection(tip.value)}
+            onClick={() => handleTipSelection(tip.id, tip.value)}
           >
-            {/* {typeof tip.value === "string" ? (
-              <input
-                type="number"
-                value={custom}
-                onChange={(e) => setCustom(e.target.value)}
-              />
-            ) : (
-              `${tip.value} %`
-            )} */}
             {typeof tip.value === "number" ? `${tip.value} %` : `${tip.value}`}
           </p>
         ))}
       </div>
+      {activeTipId === 6 && (
+        <Custom
+          customTip={customTip}
+          onCustomTipChange={handleCustomTipChange}
+        />
+      )}
     </div>
   );
 };

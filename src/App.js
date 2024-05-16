@@ -5,9 +5,12 @@ import Splitter from "./Splitter";
 import Tip from "./Tip";
 import { GlobalProvider } from "./context/GlobalState";
 import { useDisableNumberInputScroll } from "./useDisableNumberInputScroll";
+import ErrorState from "./ErrorState";
+import Custom from "./Custom";
 
 function App() {
   useDisableNumberInputScroll();
+  ErrorState();
 
   return (
     <GlobalProvider>
@@ -21,6 +24,7 @@ function App() {
               <People />
             </div>
             <ShowTip />
+            <Custom />
           </div>
         </div>
       </div>

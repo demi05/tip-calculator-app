@@ -1,5 +1,4 @@
 import { useInputValues } from "./context/GlobalState";
-// import { GlobalContext } from "./context/GlobalState";
 
 const People = () => {
   const { people, setPeople } = useInputValues();

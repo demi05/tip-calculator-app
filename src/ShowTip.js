@@ -28,7 +28,12 @@ const ShowTip = () => {
           </p>
         </div>
 
-        <button onClick={calculateBill} className="reset">
+        <button
+          onClick={calculateBill}
+          className={`not-active-btn ${
+            finalTotal > 0 ? "active-btn" : "not-active-btn"
+          }`}
+        >
           RESET
         </button>
       </form>

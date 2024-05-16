@@ -23,6 +23,7 @@ export const GlobalProvider = ({ children }) => {
 
     setFinalTip(calculatedFinalTip);
     setFinalTotal(calculatedFinalTotal);
+    // console.log(tipPercentage);
   };
 
   return (
