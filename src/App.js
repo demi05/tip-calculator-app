@@ -4,8 +4,11 @@ import People from "./People";
 import Splitter from "./Splitter";
 import Tip from "./Tip";
 import { GlobalProvider } from "./context/GlobalState";
+import { useDisableNumberInputScroll } from "./useDisableNumberInputScroll";
 
 function App() {
+  useDisableNumberInputScroll();
+
   return (
     <GlobalProvider>
       <div className="App">

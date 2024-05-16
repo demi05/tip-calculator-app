@@ -3,11 +3,6 @@ import { useInputValues } from "./context/GlobalState";
 const Bill = () => {
   const { bill, setBill } = useInputValues();
 
-  const disableScroll = (e) => {
-    // This prevents the wheel event from changing the number input's value
-    e.preventDefault();
-  };
-
   return (
     <div className="bill-div">
       <div className="bill-div-text">
@@ -19,7 +14,6 @@ const Bill = () => {
       <input
         type="number"
         value={bill}
-        onBlur={disableScroll}
         onChange={(e) => setBill(e.target.value)}
       />
     </div>

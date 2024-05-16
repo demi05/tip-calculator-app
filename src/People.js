@@ -4,11 +4,6 @@ import { useInputValues } from "./context/GlobalState";
 const People = () => {
   const { people, setPeople } = useInputValues();
 
-  const disableScroll = (e) => {
-    // This prevents the wheel event from changing the number input's value
-    e.preventDefault();
-  };
-
   return (
     <div className="people-div">
       <div className="people-div-text">
@@ -20,7 +15,6 @@ const People = () => {
       <input
         type="number"
         value={people}
-        onClick={disableScroll}
         onChange={(e) => setPeople(e.target.value)}
       />
     </div>
