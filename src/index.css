@@ -63,6 +63,11 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   align-items: center;
 }
+.input:focus,
+.input:hover {
+  border: 2px solid var(--Strong-cyan);
+  border-radius: 0.4rem;
+}
 .bill-div input,
 .people-div input {
   background-color: var(--Very-light-grayish-cyan);
@@ -72,13 +77,8 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 0.6em 0.7em;
   text-align: right;
   font-size: 1.7rem;
-  /* overflow: hidden; */
-}
-.bill-div input:hover,
-.bill-div input:active,
-.people-div input:hover,
-.people-div input:active {
-  border: 2px solid var(--Strong-cyan);
+  width: 100%;
+  outline: none;
 }
 .bill-div input {
   background-image: url("./assets/images/icon-dollar.svg");
@@ -95,7 +95,11 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: auto;
 }
 .hidden {
+  color: var(--White);
   display: none;
+}
+.not-hidden {
+  display: block;
 }
 .error-input {
   border: 2px solid red;
@@ -119,22 +123,27 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--Very-light-grayish-cyan);
   color: var(--Dark-grayish-cyan);
 }
+.tip:nth-last-of-type(1) input {
+  border: none;
+  background-color: var(--Very-light-grayish-cyan);
+  text-align: center;
+  width: 100%;
+  outline: none;
+}
+.tip:nth-last-of-type(1) input,
+.tip:nth-last-of-type(1) input::placeholder {
+  font-size: 1.4rem;
+}
 .tip:hover {
   background-color: var(--Light-grayish-cyan);
   color: var(--Very-dark-cyan);
 }
+.tip:nth-last-of-type(1):hover {
+  background-color: var(--Very-light-grayish-cyan);
+}
 .active-tip {
   background-color: var(--Strong-cyan);
   color: var(--Very-dark-cyan);
-}
-.custom-tip {
-  background-color: var(--Very-light-grayish-cyan);
-  color: var(--Dark-grayish-cyan);
-  border: none;
-  border-radius: 0.5rem;
-  /* padding: 0.6em 0.7em; */
-  /* text-align: right; */
-  /* font-size: 1.7rem; */
 }
 .calc-tip-div {
   display: flex;
@@ -155,14 +164,12 @@ form div {
   justify-content: center;
   font-weight: 700;
   letter-spacing: 0.7px;
-  /* border: 1px solid rebeccapurple; */
 }
 form div .label {
   display: flex;
   flex-direction: column;
   color: var(--White);
   gap: 0.5em;
-  /* border: 1px solid red; */
 }
 .span {
   color: var(--Grayish-cyan);
@@ -193,13 +200,27 @@ form button:hover {
   background-color: var(--Strong-cyan);
 }
 
-@media (min-width: 700px) and (max-width: 1200px) {
+@media (min-width: 950px) and (max-width: 1250px) {
   .container {
     width: 80%;
   }
+  .tip:nth-last-of-type(1) input {
+    width: 100%;
+    font-size: 1.3rem;
+  }
 }
 
-@media (max-width: 700px) {
+@media (min-width: 700px) and (max-width: 950px) {
+  .container {
+    width: 95%;
+  }
+  .tip:nth-last-of-type(1) input {
+    width: 100%;
+    font-size: 1.3rem;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 700px) {
   .splitter-div {
     margin-top: 5em;
   }
@@ -209,9 +230,36 @@ form button:hover {
     border-radius: 0;
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
-    /* grid-template-rows: repeat(2, 2fr); */
   }
   .tip-div {
     grid-template-columns: repeat(2, 2fr);
+  }
+}
+@media (max-width: 400px) {
+  .container-div {
+    width: 100vw;
+  }
+  .splitter-div {
+    margin-top: 5em;
+  }
+  .container {
+    grid-template-columns: 1fr;
+    width: 80%;
+    border-radius: 0;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+  }
+  .tip-div {
+    grid-template-columns: 1fr;
+  }
+  .tip-div p,
+  .bill-div input,
+  .people-div input {
+    width: 80%;
+  }
+  form {
+    width: 80%;
+    padding: 2em;
+    /* margin: 0 auto; */
   }
 }

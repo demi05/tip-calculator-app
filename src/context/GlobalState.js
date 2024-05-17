@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 export const useInputValues = () => useContext(GlobalContext);
@@ -10,9 +10,22 @@ export const GlobalProvider = ({ children }) => {
   const [finalTip, setFinalTip] = useState(0);
   const [finalTotal, setFinalTotal] = useState(0);
   const [tipPercentage, setTipPercentage] = useState(0);
+  const [errorClass, setErrorClass] = useState("hidden");
   // const tipPercentage = 0.15;
 
+  const handleErrorState = useCallback(() => {
+    if (bill === 0) {
+      setErrorClass("not-hidden");
+    } else {
+      setErrorClass("hidden");
+    }
+  }, [bill]);
+
   const calculateBill = () => {
+    handleErrorState();
+    if (bill === 0 || people === 0) {
+      return;
+    }
     const billPerPerson = bill / people;
 
     const calculatedFinalTip =
@@ -40,6 +53,8 @@ export const GlobalProvider = ({ children }) => {
         setFinalTip,
         finalTotal,
         setFinalTotal,
+        handleErrorState,
+        errorClass,
       }}
     >
       {children}

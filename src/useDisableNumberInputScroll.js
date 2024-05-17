@@ -6,7 +6,7 @@ export const useDisableNumberInputScroll = () => {
       e.preventDefault();
     };
 
-    //find all number inout elements in the document
+    //find all number input elements in the document
     const numberInputs = document.querySelectorAll("input[type = 'number']");
 
     //attach the handle wheen function as an event listener to each number input

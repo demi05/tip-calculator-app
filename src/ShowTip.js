@@ -1,9 +1,11 @@
 import { useInputValues } from "./context/GlobalState";
+// import Tip from "./Tip";
 
 const ShowTip = () => {
   const submitForm = (e) => {
     e.preventDefault();
   };
+  const { bill } = useInputValues();
   const { calculateBill } = useInputValues();
   const { finalTip } = useInputValues();
   const { finalTotal } = useInputValues();

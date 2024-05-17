@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useInputValues } from "./context/GlobalState";
-import Custom from "./Custom";
 
 const Tip = () => {
   let { setTipPercentage } = useInputValues();
@@ -42,16 +41,20 @@ const Tip = () => {
             key={tip.id}
             onClick={() => handleTipSelection(tip.id, tip.value)}
           >
-            {typeof tip.value === "number" ? `${tip.value} %` : `${tip.value}`}
+            {tip.value === "Custom" ? (
+              <input
+                className="custom-tip"
+                type="number"
+                placeholder="Custom"
+                value={customTip}
+                onChange={(e) => handleCustomTipChange(e.target.value)}
+              />
+            ) : (
+              `${tip.value}%`
+            )}
           </p>
         ))}
       </div>
-      {activeTipId === 6 && (
-        <Custom
-          customTip={customTip}
-          onCustomTipChange={handleCustomTipChange}
-        />
-      )}
     </div>
   );
 };

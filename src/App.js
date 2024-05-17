@@ -6,7 +6,6 @@ import Tip from "./Tip";
 import { GlobalProvider } from "./context/GlobalState";
 import { useDisableNumberInputScroll } from "./useDisableNumberInputScroll";
 import ErrorState from "./ErrorState";
-import Custom from "./Custom";
 
 function App() {
   useDisableNumberInputScroll();
@@ -24,7 +23,6 @@ function App() {
               <People />
             </div>
             <ShowTip />
-            <Custom />
           </div>
         </div>
       </div>
