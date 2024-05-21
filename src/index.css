@@ -138,8 +138,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: var(--Light-grayish-cyan);
   color: var(--Very-dark-cyan);
 }
-.tip:nth-last-of-type(1):hover {
+.tip:nth-last-of-type(1):hover,
+.tip:nth-last-of-type(1):focus {
   background-color: var(--Very-light-grayish-cyan);
+  border: 2px solid var(--Strong-cyan);
 }
 .active-tip {
   background-color: var(--Strong-cyan);

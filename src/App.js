@@ -9,7 +9,6 @@ import ErrorState from "./ErrorState";
 
 function App() {
   useDisableNumberInputScroll();
-  ErrorState();
 
   return (
     <GlobalProvider>
@@ -25,6 +24,7 @@ function App() {
             <ShowTip />
           </div>
         </div>
+        <ErrorState />
       </div>
     </GlobalProvider>
   );

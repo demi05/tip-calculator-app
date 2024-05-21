@@ -5,7 +5,6 @@ const ShowTip = () => {
   const submitForm = (e) => {
     e.preventDefault();
   };
-  const { bill } = useInputValues();
   const { calculateBill } = useInputValues();
   const { finalTip } = useInputValues();
   const { finalTotal } = useInputValues();
